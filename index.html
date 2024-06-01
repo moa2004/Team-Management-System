@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax Error Team Courses</title>
+    <link rel="icon" href="SET_Team-removebg.png">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h1, h2 {
+            transition: color 0.3s;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover-color);
+            color: white;
+        }
+
+        #courses-container, #cart-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .course, .cart-item {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            flex: 1 1 calc(33% - 40px);
+            box-sizing: border-box;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .course:hover, .cart-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .course h3, .cart-item h3 {
+            color: var(--accent-color);
+            transition: color 0.3s;
+        }
+
+        .course p, .cart-item p {
+            transition: color 0.3s;
+        }
+
+        #registration-form {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: auto;
+            animation: fadeIn 1s ease-in;
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--accent-color);
+            transition: color 0.3s;
+        }
+
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid var(--input-border-color);
+            margin-top: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover-color);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .course, .cart-item {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .course, .cart-item {
+                flex: 1 1 100%;
+            }
+
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+
+        .dark-mode {
+            --bg-color: #121212;
+            --header-bg-color: #1f1f1f;
+            --text-color: #e0e0e0;
+            --text-color-secondary: #b3b3b3;
+            --course-bg-color: #1f1f1f;
+            --input-bg-color: #1f1f1f;
+            --input-border-color: #3c3c3c;
+            --accent-color: #bb86fc;
+            --accent-hover-color: #9e66f1;
+        }
+        .light-mode {
+            --bg-color: #f0f0f0;
+            --header-bg-color: #ffffff;
+            --text-color: #333333;
+            --text-color-secondary: #666666;
+            --course-bg-color: #ffffff;
+            --input-bg-color: #ffffff;
+            --input-border-color: #cccccc;
+            --accent-color: #6200ea;
+            --accent-hover-color: #3700b3;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--header-bg-color);
+        }
+
+        .hero, .course, .cart-item, #registration-form {
+            background-color: var(--course-bg-color);
+        }
+
+        .course p, .cart-item p {
+            color: var(--text-color-secondary);
+        }
+
+        input, select, textarea, button {
+            background-color: var(--input-bg-color);
+            border-color: var(--input-border-color);
+            color: var(--text-color);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            background-color: var(--input-focus-bg);
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header>
+        <div class="logo">
+            <img src="SET_Team-removebg.png" alt="Syntax Error Team Logo">
+            <h1>Syntax Error Team</h1>
+        </div>
+        <nav>
+            <a href="#courses-section">Courses</a>
+            <a href="#cart-section">Cart</a>
+            <a href="#registration-section">Register</a>
+            <button id="mode-toggle" class="btn">Change Mode</button>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Discover Amazing Courses</h2>
+            <p>Learn new skills and advance your career with our expertly designed courses.</p>
+            <a href="#courses-section" class="btn">Explore Courses</a>
+        </section>
+
+        <section id="courses-section">
+            <h2>Available Courses</h2>
+            <div id="courses-container"></div>
+        </section>
+
+        <section id="cart-section">
+            <h2>Items in Your Cart</h2>
+            <div id="cart-items"></div>
+            <a href="#registration-section" class="btn">Proceed to Registration</a>
+        </section>
+
+        <section id="registration-section">
+                        <h2 style="text-align: center;">Registration Form</h2>
+            <form id="registration-form" action="https://formspree.io/f/mnqekpql" method="POST">
+                <input type="hidden" name="_next" value="thankyou.html" />
+                <input type="hidden" name="_subject" value="New Registration" />
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="phone">Whats app Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div>
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div>
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="course">Course selected:</label>
+                    <select id="course" name="course" required>
+                        <option value="">Select a course</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="promo">Promo Code(if found):</label>
+                    <input type="text" id="promo" name="promo">
+                </div>
+                <div>
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const courses = [
+                { id: 1, title: 'JAVA Beginners', description: 'Java basics { Data types , Conditions , loops , methods , Arrays , problem solving}', price: 100 },
+                { id: 2, title: 'OOP with java', description: '{ Classes & Objects , Encapsulation , Inheritence , Polymorphism , Abstraction , Exception Handling}', price: 200 },
+                { id: 3, title: 'Data Structures And Alogorithms with java ', description: '{ Time complexity , Count of steps method , Searching Algorithms (linear , binary search) , Sorting algorithms (Bubble,insertion,selection,merge,quick) , Stack , queue , Arrays , linked lists (Singly , doubly , circular , XOR) , tree , graph }', price: 300 },
+            ];
+
+            const coursesContainer = document.getElementById('courses-container');
+            const cartItems = document.getElementById('cart-items');
+            const courseSelect = document.getElementById('course');
+            const modeToggle = document.getElementById('mode-toggle');
+            const body = document.body;
+
+            const renderCourses = (courses, container) => {
+                container.innerHTML = '';
+                courses.forEach(course => {
+                    const courseElement = document.createElement('div');
+                    courseElement.className = 'course';
+                    courseElement.innerHTML = `
+                        <h3>${course.title}</h3>
+                        <p>${course.description}</p>
+                        <p>Price: $${course.price}</p>
+                        <button onclick="addToCart(${course.id})">Add to Cart</button>
+                    `;
+                    container.appendChild(courseElement);
+                });
+            };
+
+            const populateCourseSelect = (courses, selectElement) => {
+                courses.forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course.title;
+                    option.textContent = course.title;
+                    selectElement.appendChild(option);
+                });
+            };
+
+            window.addToCart = (courseId) => {
+                const course = courses.find(c => c.id === courseId);
+                const cartItemElement = document.createElement('div');
+                cartItemElement.className = 'cart-item';
+                cartItemElement.innerHTML = `
+                    <h3>${course.title}</h3>
+                    <p>${course.description}</p>
+                    <p>Price: $${course.price}</p>
+                `;
+                cartItems.appendChild(cartItemElement);
+            };
+
+            modeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                body.classList.toggle('light-mode');
+                modeToggle.textContent = body.classList.contains('dark-mode') ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+            });
+
+            if (coursesContainer) {
+                renderCourses(courses, coursesContainer);
+            }
+            
+            if (courseSelect) {
+                populateCourseSelect(courses, courseSelect);
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
